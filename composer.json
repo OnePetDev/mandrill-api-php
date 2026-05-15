@@ -1,13 +1,13 @@
 {
-    "name": "jlinn/mandrill-api-php",
+    "name": "OnePetDev/mandrill-api-php",
     "type": "library",
     "description": "A PHP client library for Mandrill's REST API",
     "keywords": ["mandrill"],
     "license": "MIT",
     "authors": [
         {
-            "name": "Joe Linn",
-            "homepage": "https://github.com/jlinn"
+            "name": "OnePetDev",
+            "homepage": "https://github.com/OnePetDev"
         }
     ],
     "require": {
