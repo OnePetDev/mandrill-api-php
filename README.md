@@ -1,6 +1,6 @@
 mandrill-api-php
 ================
-[![Build Status](https://secure.travis-ci.org/jlinn/mandrill-api-php.png?branch=master)](http://travis-ci.org/jlinn/mandrill-api-php)
+[![Build Status](https://secure.travis-ci.org/OnePetDev/mandrill-api-php.png?branch=master)](http://travis-ci.org/OnePetDev/mandrill-api-php)
 
 A PHP client library for [Mandrill's API](https://mandrillapp.com/api/docs/).
 
@@ -12,7 +12,7 @@ Installation Using [Composer](http://getcomposer.org/)
 Assuming composer.phar is located in your project's root directory, run the following command:
 
 ```bash
-php composer.phar require jlinn/mandrill-api-php:~1.0
+php composer.phar require onepetdev/mandrill-api-php:~1.0
 ```
 
 Usage
@@ -22,9 +22,9 @@ Sending a Message
 -----------------
 
 ```php
-use Jlinn\Mandrill\Mandrill;
-use Jlinn\Mandrill\Struct\Message;
-use Jlinn\Mandrill\Struct\Recipient;
+use OnePetDev\Mandrill\Mandrill;
+use OnePetDev\Mandrill\Struct\Message;
+use OnePetDev\Mandrill\Struct\Recipient;
 
 // instantiate a client object
 $mandrill = new Mandrill('your_api_key');
@@ -62,7 +62,7 @@ Configuration
 In order to publish the package configuration you need to perform the following command:
 
 ```
-php artisan config:publish jlinn/mandrill-api-php
+php artisan config:publish onepetdev/mandrill-api-php
 ```
 
 Change then the `secret` variable with your Mandrill secret key.

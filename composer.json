@@ -1,5 +1,5 @@
 {
-    "name": "OnePetDev/mandrill-api-php",
+    "name": "onepetdev/mandrill-api-php",
     "type": "library",
     "description": "A PHP client library for Mandrill's REST API",
     "keywords": ["mandrill"],
@@ -18,19 +18,13 @@
         "phpunit/phpunit": "3.7.*"
     },
     "autoload": {
-        "psr-0": {
-            "Jlinn\\": "src/Jlinn/"
-        },
         "psr-4": {
-            "Jlinn\\": "src/Jlinn/"
+            "OnePetDev\\": "src/OnePetDev/"
         }
     },
     "autoload-dev": {
-        "psr-0": {
-            "Jlinn\\": "tests/"
-        },
         "psr-4": {
-            "Jlinn\\": "tests/"
+            "OnePetDev\\Mandrill\\Tests\\": "tests/OnePetDev/Tests/"
         }
     }
 }

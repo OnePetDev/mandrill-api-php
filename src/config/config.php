@@ -20,6 +20,6 @@ return array(
     | If you wish to have a custom factory class to enhance the functionality of the library, feel free to override it.
     |
     */
-    'factory' => 'Jlinn\Mandrill\MandrillFactory'
+    'factory' => 'OnePetDev\Mandrill\MandrillFactory'
 
 );
