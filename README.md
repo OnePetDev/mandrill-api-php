@@ -1,94 +1,51 @@
 mandrill-api-php
 ================
-[![Build Status](https://secure.travis-ci.org/OnePetDev/mandrill-api-php.png?branch=master)](http://travis-ci.org/OnePetDev/mandrill-api-php)
 
-A PHP client library for [Mandrill's API](https://mandrillapp.com/api/docs/).
+OnePetDev fork of [`mandrill/mandrill`](https://bitbucket.org/mailchimp/mandrill-api-php/) — the official PHP client for [Mandrill's API](https://mandrillapp.com/api/docs/), republished after Mailchimp removed the package from Packagist.
 
-This library provides all of the functionality present in the [official PHP client](https://bitbucket.org/mailchimp/mandrill-api-php/), but makes use of namespaces and provides helper classes to ease message sending.
+This is a **byte-identical** mirror of the upstream `mandrill/mandrill` v1.0.55 source. The only changes from upstream live in `composer.json` (package name and metadata) so the library can be installed via Composer from GitHub. The public API — class names, method signatures, behaviour — is unchanged. Existing code written against `mandrill/mandrill` works without modification once the dependency is swapped.
 
-Installation Using [Composer](http://getcomposer.org/)
-======================================================
+Installation
+============
 
-Assuming composer.phar is located in your project's root directory, run the following command:
+Because this package is not on Packagist, add the repository to your project's `composer.json` and require it by name:
 
-```bash
-php composer.phar require onepetdev/mandrill-api-php:~1.0
+```json
+{
+    "require": {
+        "onepetdev/mandrill-api-php": "^1.0"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/OnePetDev/mandrill-api-php.git"
+        }
+    ]
+}
 ```
+
+Until a tagged release exists, use `"dev-master"` in place of `"^1.0"`.
 
 Usage
 =====
 
-Sending a Message
------------------
+Identical to the upstream library:
 
 ```php
-use OnePetDev\Mandrill\Mandrill;
-use OnePetDev\Mandrill\Struct\Message;
-use OnePetDev\Mandrill\Struct\Recipient;
+require_once 'vendor/autoload.php';
 
-// instantiate a client object
-$mandrill = new Mandrill('your_api_key');
-
-// instantiate a Message object
-$message = new Message();
-
-// define message properties
-$message->text = 'Hello, *|NAME|*!';
-$message->subject = 'Test';
-$message->from_email = 'test@example.com';
-$message->from_name = 'Mandrill API Test';
-
-// instantiate a Recipient object and add details
-$recipient = new Recipient();
-$recipient->email = 'recipient.email@example.com';
-$recipient->name = 'Recipient Name';
-$recipient->addMergeVar('NAME', $recipient->name);
-
-// add the recipient to the message
-$message->addRecipient($recipient);
-
-// send the message
-$response = $mandrill->messages()->send($message);
-```
-
-Usage with Laravel 4.x
-=====
-
-We have built a factory so that it's easier to use with Laravel 4.x facades.
-
-Configuration
------------------
-
-In order to publish the package configuration you need to perform the following command:
-
-```
-php artisan config:publish onepetdev/mandrill-api-php
-```
-
-Change then the `secret` variable with your Mandrill secret key.
-
-Sending a Message
------------------
-
-```php
-
-// instantiate a client object
-$api = Mandrill::api();
-
-// instantiate a message object
-$message = Mandrill::message([
-    'text'       => 'Hello, *|NAME|*!',
-    'subject'    => 'Test',
-    'from_email' => 'test@example.com',
-    'from_name'  => 'Mandrill API Test'
+$mandrill = new Mandrill('YOUR_API_KEY');
+$result = $mandrill->messages->send([
+    'subject'    => 'Hello',
+    'from_email' => 'sender@example.com',
+    'to'         => [['email' => 'recipient@example.com']],
+    'text'       => 'Hello, world!',
 ]);
+```
 
-// instantiate a Recipient object and add details
-$recipient = Mandrill::recipient('recipient.email@example.com', 'Recipient Name');
-$recipient->addMergeVar('NAME', $recipient->name);
+See the [Mandrill API documentation](https://mailchimp.com/developer/transactional/api/) for the full API surface.
 
-// add the recipient to the message
-$message->addRecipient($recipient);
+License
+=======
 
-// send the message
-$response = $api->messages()->send($message);
+Apache-2.0. Copyright 2013 The Rocket Science Group, LLC. See [LICENSE](LICENSE) for full terms.

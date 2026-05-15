@@ -5,3 +5,7 @@
 # composer
 /vendor/
 composer.lock
+
+# Claude / oh-my-claudecode harness state
+.omc/
+.claude/
